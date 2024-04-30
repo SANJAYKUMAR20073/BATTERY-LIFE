@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="">
+<head>
+    <title>EV BATTERY MANAGEMENT SYSTEM</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="{% static 'layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- Top Background Image Wrapper -->
+<div class="bgded overlay" style="background-image:url('{% static 'images/demo/backgrounds/1.jpg' %}');">
+    <div id="pageintro" class="hoc clear">
+        <article>
+            <h3 class="heading">EV BATTERY MANAGEMENT SYSTEM</h3>
+            <p>It optimizes the performance and lifespan of electric vehicle batteries.</p>
+        </article>
+        <form action='input' method="POST" enctype="multipart/form-data" class="login100-form validate-form" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <div class="wrap-input100 validate-input" data-validate="Username is required">
+                <input class="input100" type="text" id="username" name="username" style="color: black;" placeholder="Username">
+                <span class="focus-input100"></span>
+                <span class="label-input100">Name</span>
+                <span class="error-msg" id="username-error" style="color: red;"></span> <!-- Error message container -->
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                <input class="input100" type="password" id="password" name="password" style="color: black;" placeholder="Password">
+                <span class="focus-input100"></span>
+                <span class="label-input100">Password</span>
+                <span class="error-msg" id="password-error" style="color: red;"></span> <!-- Error message container -->
+            </div>
+            <footer><button type="submit" class="btn">LOGIN</button></footer>
+        </form>
+    </div>
+</div>
+<!-- End Top Background Image Wrapper -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="{% static 'layout/scripts/jquery.min.js' %}"></script>
+<script src="{% static 'layout/scripts/jquery.backtotop.js' %}"></script>
+<script src="{% static 'layout/scripts/jquery.mobilemenu.js' %}"></script>
+<script>
+    function validateForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Check if username is empty
+        if (username.trim() === '') {
+            document.getElementById("username-error").innerText = "Username is required";
+            return false; // Prevent form submission
+        } else {
+            document.getElementById("username-error").innerText = ""; // Clear error message
+        }
+
+        // Check if password is empty
+        if (password.trim() === '') {
+            document.getElementById("password-error").innerText = "Password is required";
+            return false; // Prevent form submission
+        } else {
+            document.getElementById("password-error").innerText = ""; // Clear error message
+        }
+
+        // Hardcoded valid username and password
+        var validUsername = "SANJAY KUMAR K";
+        var validPassword = "Capstone";
+
+        // Check if entered username and password match the hardcoded values
+        if (username === validUsername && password === validPassword) {
+            return true;
+        } else {
+            // If not valid, display an error message
+            if (username !== validUsername) {
+                document.getElementById("username-error").innerText = "Invalid Username";
+            }
+            if (password !== validPassword) {
+                document.getElementById("password-error").innerText = "Invalid Password";
+            }
+            return false; // Prevent form submission
+        }
+    }
+</script>
+</body>
+</html>
